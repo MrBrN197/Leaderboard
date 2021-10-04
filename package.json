@@ -3,22 +3,31 @@
   "version": "1.0.0",
   "description": "Leaderboard is a website that displays scores submitted by different players. It also allows you to submit your score",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "babel-eslint": "^10.1.0",
-    "eslint-config-airbnb-base": "^14.2.1",
+    "css-loader": "^6.3.0",
     "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.24.2",
     "hint": "^6.1.4",
+    "html-webpack-plugin": "^5.3.2",
+    "sass": "^1.42.1",
+    "sass-loader": "^12.1.0",
+    "style-loader": "^3.3.0",
     "stylelint": "^13.13.1",
-    "stylelint-csstree-validator": "^1.9.0",
     "stylelint-config-standard": "^21.0.0",
-    "stylelint-scss": "^3.21.0"
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-scss": "^3.21.0",
+    "webpack": "^5.56.1",
+    "webpack-cli": "^4.8.0",
+    "webpack-dev-server": "^4.3.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . && stylelint **/*.{css,scss} && hint ."
-    
+    "lint": "eslint . && stylelint **/*.{css,scss} && hint .",
+    "start": "webpack serve --open",
+    "build": "webpack build"
   },
   "repository": {
     "type": "git",
