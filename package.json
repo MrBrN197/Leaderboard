@@ -1,0 +1,34 @@
+{
+  "name": "leaderboard",
+  "version": "1.0.0",
+  "description": "Leaderboard is a website that displays scores submitted by different players. It also allows you to submit your score",
+  "main": "index.js",
+  "dependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint": "^7.32.0",
+    "eslint-plugin-import": "^2.24.2",
+    "hint": "^6.1.4",
+    "stylelint": "^13.13.1",
+    "stylelint-csstree-validator": "^1.9.0",
+    "stylelint-config-standard": "^21.0.0",
+    "stylelint-scss": "^3.21.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . && stylelint **/*.{css,scss} && hint ."
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrBrN197/Leaderboard.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MrBrN197/Leaderboard/issues"
+  },
+  "homepage": "https://github.com/MrBrN197/Leaderboard#readme"
+}
