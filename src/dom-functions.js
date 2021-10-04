@@ -1,4 +1,5 @@
-/* eslint-disable-next-line import/prefer-default-export */
+import { getScores } from './api.js';
+
 export const initializePageHTML = () => {
   const initialHTML = `
   <header>
@@ -8,16 +9,9 @@ export const initializePageHTML = () => {
     <section class="leaderboard">
       <div class="header">
         <h2>Recent scores</h2>
-        <button type="button">Refresh</button>
+        <button id="refresh-btn" type="button">Refresh</button>
       </div>
-      <ul class="scores">
-        <li>Name: 100</li>
-        <li>Name: 20</li>
-        <li>Name: 50</li>
-        <li>Name: 78</li>
-        <li>Name: 125</li>
-        <li>Name: 77</li>
-        <li>Name: 42</li>
+      <ul id="scoreboard">
       </ul>
     </section>
     <section class="add-score">
@@ -33,4 +27,19 @@ export const initializePageHTML = () => {
   </main>
   `;
   document.body.innerHTML = initialHTML;
+};
+
+export const refreshScoreBoard = () => {
+  const scoreboard = document.getElementById('scoreboard');
+  getScores().then((scores) => {
+    console.log('scores: ', scores);
+
+    scoreboard.innerHTML = '';
+    scores.result.forEach(({ user, score }) => {
+      console.log(user, score);
+      const scoreLi = document.createElement('li');
+      scoreLi.textContent = `${user}: ${score}`;
+      scoreboard.appendChild(scoreLi);
+    });
+  });
 };
