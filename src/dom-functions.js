@@ -33,4 +33,4 @@ export const initializePageHTML = () => {
   </main>
   `;
   document.body.innerHTML = initialHTML;
-}
+};
