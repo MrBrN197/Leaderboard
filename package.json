@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Leaderboard is a website that displays scores submitted by different players. It also allows you to submit your score",
   "main": "index.js",
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.3.0",
     "eslint": "^7.32.0",
@@ -22,7 +23,6 @@
     "webpack-cli": "^4.8.0",
     "webpack-dev-server": "^4.3.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint . && stylelint **/*.{css,scss} && hint .",
