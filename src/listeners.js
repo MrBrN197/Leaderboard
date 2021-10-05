@@ -1,4 +1,6 @@
-import { initializeScoreboard, addToScoreBoard, setDisabledState } from './dom-functions.js';
+import {
+  initializeScoreboard, addToScoreBoard, setDisabledState, clearInput,
+} from './dom-functions.js';
 
 export default () => {
   const refreshBtn = document.getElementById('refresh-btn');
@@ -14,6 +16,7 @@ export default () => {
     setDisabledState(submitInput, true);
     const success = await addToScoreBoard(userInput.value, scoreInput.value);
     if (success) initializeScoreboard();
+    clearInput(userInput, scoreInput);
     setDisabledState(submitInput, false);
   });
 };

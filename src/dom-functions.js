@@ -52,3 +52,5 @@ export const addToScoreBoard = async (usernameValue, scoreValue) => {
 export const setDisabledState = (element, state) => {
   element.disabled = !!state;
 };
+
+export const clearInput = (...inputs) => inputs.forEach((input) => { input.value = ''; });
