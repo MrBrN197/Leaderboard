@@ -1,4 +1,5 @@
-/* eslint-disable-next-line import/prefer-default-export */
+import { getScores, addScore } from './api.js';
+
 export const initializePageHTML = () => {
   const initialHTML = `
   <header>
@@ -8,16 +9,9 @@ export const initializePageHTML = () => {
     <section class="leaderboard">
       <div class="header">
         <h2>Recent scores</h2>
-        <button type="button">Refresh</button>
+        <button id="refresh-btn" type="button">Refresh</button>
       </div>
-      <ul class="scores">
-        <li>Name: 100</li>
-        <li>Name: 20</li>
-        <li>Name: 50</li>
-        <li>Name: 78</li>
-        <li>Name: 125</li>
-        <li>Name: 77</li>
-        <li>Name: 42</li>
+      <ul id="scoreboard">
       </ul>
     </section>
     <section class="add-score">
@@ -25,8 +19,8 @@ export const initializePageHTML = () => {
         <h2>Add your score</h2>
       </div>
       <form action="#">
-        <input type="text" name="name" id="name" placeholder="Your name">
-        <input type="number" name="score" id="score" placeholder="Your score">
+        <input type="text" name="name" id="name" placeholder="Your name" required>
+        <input type="number" name="score" id="score" placeholder="Your score" required>
         <input type="submit" value="Submit">
       </form>
     </section>
@@ -34,3 +28,29 @@ export const initializePageHTML = () => {
   `;
   document.body.innerHTML = initialHTML;
 };
+
+export const initializeScoreboard = async () => {
+  const scoreboard = document.getElementById('scoreboard');
+  const scores = await getScores();
+  scoreboard.innerHTML = '';
+  scores.result.forEach(({ user, score }) => {
+    const scoreLi = document.createElement('li');
+    scoreLi.textContent = `${user}: ${score}`;
+    scoreboard.appendChild(scoreLi);
+  });
+};
+
+export const addToScoreBoard = async (usernameValue, scoreValue) => {
+  const username = usernameValue.trim();
+  const score = parseInt(scoreValue.trim(), 10);
+  if (!username || !score) return false;
+  const response = await addScore(username, score);
+  if (response.message) return false;
+  return true;
+};
+
+export const setDisabledState = (element, state) => {
+  element.disabled = !!state;
+};
+
+export const clearInput = (...inputs) => inputs.forEach((input) => { input.value = ''; });
