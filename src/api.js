@@ -2,11 +2,13 @@ export const BASE_URL = 'https://us-central1-js-capstone-backend.cloudfunctions.
 
 export const GAME_ID = 'sa7iLyWCcC3Ao7tJMfAb';
 
-export const getScores = () => fetch(`${BASE_URL}/games/${GAME_ID}/scores`)
-  .then((resp) => resp.json());
+export const getScores = async () => {
+  const resp = await fetch(`${BASE_URL}/games/${GAME_ID}/scores`);
+  return resp.json();
+};
 
-export const addScore = (username, score) => fetch(
-  `${BASE_URL}/games/${GAME_ID}/scores/`, {
+export const addScore = async (username, score) => {
+  const resp = await fetch(`${BASE_URL}/games/${GAME_ID}/scores/`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -15,5 +17,6 @@ export const addScore = (username, score) => fetch(
       user: username,
       score,
     }),
-  },
-).then((resp) => resp.json());
+  });
+  return resp.json();
+};

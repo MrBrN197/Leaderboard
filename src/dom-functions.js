@@ -29,15 +29,14 @@ export const initializePageHTML = () => {
   document.body.innerHTML = initialHTML;
 };
 
-export const initializeScoreboard = () => {
+export const initializeScoreboard = async () => {
   const scoreboard = document.getElementById('scoreboard');
-  getScores().then((scores) => {
-    scoreboard.innerHTML = '';
-    scores.result.forEach(({ user, score }) => {
-      const scoreLi = document.createElement('li');
-      scoreLi.textContent = `${user}: ${score}`;
-      scoreboard.appendChild(scoreLi);
-    });
+  const scores = await getScores();
+  scoreboard.innerHTML = '';
+  scores.result.forEach(({ user, score }) => {
+    const scoreLi = document.createElement('li');
+    scoreLi.textContent = `${user}: ${score}`;
+    scoreboard.appendChild(scoreLi);
   });
 };
 
@@ -45,10 +44,9 @@ export const addToScoreBoard = async (usernameValue, scoreValue) => {
   const username = usernameValue.trim();
   const score = parseInt(scoreValue.trim(), 10);
   if (!username || !score) return false;
-  return addScore(username, score).then((response) => {
-    if (response.message) return false;
-    return true;
-  });
+  const response = await addScore(username, score);
+  if (response.message) return false;
+  return true;
 };
 
 export const setDisabledState = (element, state) => {
