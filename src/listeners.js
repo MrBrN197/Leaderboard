@@ -1,9 +1,15 @@
-import { refreshScoreBoard } from './dom-functions.js';
+import { initializeScoreboard, addToScoreBoard } from './dom-functions.js';
 
-/* eslint-disable-next-line import/prefer-default-export */
-export const createEventListeners = () => {
-  console.log('creating event listeners');
+export default () => {
   const refreshBtn = document.getElementById('refresh-btn');
-  refreshBtn.addEventListener('click', refreshScoreBoard);
+  refreshBtn.addEventListener('click', initializeScoreboard);
   refreshBtn.click();
+
+  const formElem = document.querySelector('form');
+  const userInput = document.getElementById('name');
+  const scoreInput = document.getElementById('score');
+  formElem.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addToScoreBoard(userInput.value, scoreInput.value);
+  });
 };

@@ -1,4 +1,4 @@
-import { getScores } from './api.js';
+import { getScores, addScore } from './api.js';
 
 export const initializePageHTML = () => {
   const initialHTML = `
@@ -29,17 +29,24 @@ export const initializePageHTML = () => {
   document.body.innerHTML = initialHTML;
 };
 
-export const refreshScoreBoard = () => {
+export const initializeScoreboard = () => {
   const scoreboard = document.getElementById('scoreboard');
   getScores().then((scores) => {
-    console.log('scores: ', scores);
-
     scoreboard.innerHTML = '';
     scores.result.forEach(({ user, score }) => {
-      console.log(user, score);
       const scoreLi = document.createElement('li');
       scoreLi.textContent = `${user}: ${score}`;
       scoreboard.appendChild(scoreLi);
     });
+  });
+};
+
+export const addToScoreBoard = async (usernameValue, scoreValue) => {
+  const username = usernameValue.trim();
+  const score = parseInt(scoreValue.trim(), 10);
+  if (!username || !score) return false;
+  return addScore(username, score).then((response) => {
+    if (response.message) return false;
+    return true;
   });
 };

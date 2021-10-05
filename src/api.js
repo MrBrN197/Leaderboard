@@ -6,8 +6,11 @@ export const getScores = () => fetch(`${BASE_URL}/games/${GAME_ID}/scores`)
   .then((resp) => resp.json());
 
 export const addScore = (username, score) => fetch(
-  `${BASE_URL}/games/${GAME_ID}/scores`, {
+  `${BASE_URL}/games/${GAME_ID}/scores/`, {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify({
       user: username,
       score,
