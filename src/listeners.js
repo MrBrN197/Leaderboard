@@ -1,4 +1,4 @@
-import { initializeScoreboard, addToScoreBoard } from './dom-functions.js';
+import { initializeScoreboard, addToScoreBoard, setDisabledState } from './dom-functions.js';
 
 export default () => {
   const refreshBtn = document.getElementById('refresh-btn');
@@ -8,8 +8,12 @@ export default () => {
   const formElem = document.querySelector('form');
   const userInput = document.getElementById('name');
   const scoreInput = document.getElementById('score');
-  formElem.addEventListener('submit', (e) => {
+  formElem.addEventListener('submit', async (e) => {
     e.preventDefault();
-    addToScoreBoard(userInput.value, scoreInput.value);
+    const submitInput = formElem.querySelector('input[type=submit]');
+    setDisabledState(submitInput, true);
+    const success = await addToScoreBoard(userInput.value, scoreInput.value);
+    if (success) initializeScoreboard();
+    setDisabledState(submitInput, false);
   });
 };

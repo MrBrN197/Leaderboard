@@ -23,6 +23,10 @@ button,
 input[type=submit] {
   font-weight: bold;
   border: 2px solid black;
+
+  &:disabled {
+    border: 2px solid rgb(160, 160, 160);
+  }
 }
 
 header {

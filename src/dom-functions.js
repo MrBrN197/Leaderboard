@@ -19,8 +19,8 @@ export const initializePageHTML = () => {
         <h2>Add your score</h2>
       </div>
       <form action="#">
-        <input type="text" name="name" id="name" placeholder="Your name">
-        <input type="number" name="score" id="score" placeholder="Your score">
+        <input type="text" name="name" id="name" placeholder="Your name" required>
+        <input type="number" name="score" id="score" placeholder="Your score" required>
         <input type="submit" value="Submit">
       </form>
     </section>
@@ -49,4 +49,8 @@ export const addToScoreBoard = async (usernameValue, scoreValue) => {
     if (response.message) return false;
     return true;
   });
+};
+
+export const setDisabledState = (element, state) => {
+  element.disabled = !!state;
 };
