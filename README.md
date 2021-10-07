@@ -4,8 +4,6 @@
 
 ![screenshot](./preview.png)
 
-Additional description about the project and its features.
-
 ## Built With
 
 - JavaScript
@@ -38,7 +36,7 @@ npm run build
 
 ## Authors
 
-👤 **Author1**
+👤 **Brian Orora**
 
 - GitHub: [@MrBrN197](https://github.com/MrBrN197)
 - Twitter: [@MrBrN197](https://twitter.com/MrBrN197)
