@@ -2,6 +2,10 @@
 
 > Leaderboard is a website that displays scores submitted by different players. It also allows you to submit your score
 
+---
+
+Live Demo [https://mrbrn197.github.io/Leaderboard](https://mrbrn197.github.io/Leaderboard/dist)
+
 ![screenshot](./preview.png)
 
 ## Built With
