@@ -2,8 +2,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const mode = process.env.NODE_ENV && 'production' || 'development';
 const config = {
-  mode: 'development',
+  mode,
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -17,6 +18,7 @@ const config = {
         use: [
           'style-loader',
           'css-loader',
+          "postcss-loader",
           "sass-loader",
         ],
       },
