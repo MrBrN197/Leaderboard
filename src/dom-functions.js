@@ -19,8 +19,8 @@ export const initializePageHTML = () => {
         <h2>Add your score</h2>
       </div>
       <form action="#">
-        <input type="text" name="name" id="name" placeholder="Your name" required>
-        <input type="number" name="score" id="score" placeholder="Your score" required>
+        <input type="text" name="name" id="name" placeholder="Your name" required autocomplete="off">
+        <input type="number" name="score" id="score" placeholder="Your score" required autocomplete="off">
         <input type="submit" value="Submit">
       </form>
     </section>

@@ -6,6 +6,8 @@
 }
 
 $orange: rgb(245, 159, 0);
+$black: #000;
+$white: #fff;
 $light-purple: #452b70;
 $bg-clr: #2b2b2b;
 
@@ -18,7 +20,7 @@ $bg-clr: #2b2b2b;
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: darken(orange, 20%);
+  background-color: darken($orange, 20%);
   border-radius: 0.4rem;
   border: 0.2rem solid $bg-clr;
   box-sizing: content-box;
@@ -45,25 +47,27 @@ ul {
 button,
 li,
 input {
-  padding: 0.4em 0.8em;
+  padding: 0.6em 0.8em;
 }
 
 input:not([type=submit]) {
-  background: rgba(0, 0, 0, 0.5);
+  background-color: rgba($black, 0.4);
   border-radius: 0.4em;
   border: none;
   font-size: 1rem;
+  color: $orange;
+  transition: background-color 120ms ease-out;
 
   &::placeholder {
     color: rgba($orange, 0.6);
   }
 
-  &:autofill {
-    background-color: crimson;
+  &:focus {
+    outline: none;
   }
 
   &:focus {
-    outline: none;
+    background-color: rgba($black, 0.6);
   }
 }
 
@@ -72,13 +76,12 @@ input[type=submit] {
   font-weight: bold;
   border: none;
   font-size: 0.8rem;
-  // border: 2px solid $orange;
   border-radius: 0.4em;
   padding-block: 0.4em;
   padding-inline-end: 1em;
   background-color: rgb(53, 53, 53);
   color: $orange;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 1px 1px rgba($black, 0.3);
   cursor: pointer;
   transition-duration: 120ms;
   transition-property: background-color, transform;
@@ -94,6 +97,10 @@ input[type=submit] {
 
   &:disabled {
     border: 2px solid rgb(160, 160, 160);
+  }
+
+  &:focus-visible {
+    outline: 2px solid black;
   }
 }
 
@@ -133,11 +140,6 @@ main {
     height: 50vh;
     display: flex;
     flex-direction: column;
-  }
-
-  section.add-score {
-    background: linear-gradient(45deg, rgb(255, 100, 44), rgb(146, 43, 231));
-    padding-inline: 4rem;
   }
 
   #scoreboard {
@@ -180,14 +182,19 @@ main {
     }
   }
 
-  .add-score form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  section.add-score {
+    background: linear-gradient(45deg, rgb(255, 100, 44), rgb(146, 43, 231));
+    padding-inline: 4rem;
 
-    input[type=submit] {
-      width: min-content;
-      margin-left: auto;
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      input[type=submit] {
+        width: min-content;
+        margin-left: auto;
+      }
     }
   }
 }
