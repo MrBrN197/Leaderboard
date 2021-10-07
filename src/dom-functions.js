@@ -29,14 +29,40 @@ export const initializePageHTML = () => {
   document.body.innerHTML = initialHTML;
 };
 
+export const createScoreCardElement = (user, score) => {
+  const scoreLi = document.createElement('li');
+
+  const innerHTML = `
+    <div>
+      <div class="details">
+        <span class="name">${user}</span>
+        <span class="name">${score}</span>
+      </div>
+      <div class="progress"></div>
+    </div>
+  `;
+
+  scoreLi.classList.add('score-card');
+  // scoreLi.classList.add('active');
+  scoreLi.innerHTML = innerHTML;
+  return scoreLi;
+};
+
 export const initializeScoreboard = async () => {
   const scoreboard = document.getElementById('scoreboard');
   const scores = await getScores();
+  scores.result.sort((a, b) => b.score - a.score);
+
+  const maxScore = scores.result[0].score;
+
   scoreboard.innerHTML = '';
   scores.result.forEach(({ user, score }) => {
-    const scoreLi = document.createElement('li');
-    scoreLi.textContent = `${user}: ${score}`;
-    scoreboard.appendChild(scoreLi);
+    const scoreCard = createScoreCardElement(user, score);
+    scoreboard.appendChild(scoreCard);
+    scoreboard.getBoundingClientRect(); // NOTE: neccessary for transition to work
+
+    scoreCard.querySelector('.progress').style.width = `${(score / maxScore) * 100}%`;
+    scoreCard.querySelector('.progress').classList.add('active');
   });
 };
 
