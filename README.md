@@ -11,12 +11,30 @@ Additional description about the project and its features.
 - JavaScript
 - SCSS
 - Webpack
+- PostCSS
 
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
-`git clone https://github.com/MrBrN197/Leaderboard.git`
+```
+git clone https://github.com/MrBrN197/Leaderboard.git
+```
+
+and then run
+
+```
+npm i
+npm start
+```
+
+## Installation
+
+to build a production version to `dist` folder run
+
+```
+npm run build
+```
 
 ## Authors
 
@@ -39,7 +57,3 @@ Give a ⭐️ if you like this project!
 ## Acknowledgments
 
 - Leaderboard API
-
-## 📝 License
-
-This project is [MIT](./MIT.md) licensed.
