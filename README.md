@@ -7,6 +7,7 @@
 Live Demo [https://mrbrn197.github.io/Leaderboard](https://mrbrn197.github.io/Leaderboard/dist)
 
 ![screenshot](./preview.png)
+![screenshot](./demo.gif)
 
 ## Built With
 
