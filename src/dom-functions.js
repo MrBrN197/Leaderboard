@@ -1,5 +1,6 @@
 import { getScores, addScore } from './api.js';
 import initialHTML from './content.js';
+import { showOverlay, hideOverlay } from './overlay.js';
 
 export const initializePageHTML = () => {
   document.body.innerHTML = initialHTML;
@@ -26,20 +27,24 @@ export const createScoreCardElement = (user, score) => {
 
 export const initializeScoreboard = async () => {
   const scoreboard = document.getElementById('scoreboard');
+  showOverlay(scoreboard);
+  const scoreboardContent = scoreboard.querySelector('.content');
+  scoreboardContent.innerHTML = '';
   const scores = await getScores();
+  await new Promise((resolve) => setTimeout(resolve, 1200));
   scores.result.sort((a, b) => b.score - a.score);
 
   const maxScore = scores.result[0].score;
 
-  scoreboard.innerHTML = '';
   scores.result.forEach(({ user, score }) => {
     const scoreCard = createScoreCardElement(user, score);
-    scoreboard.appendChild(scoreCard);
-    scoreboard.getBoundingClientRect(); // NOTE: neccessary for transition to work
+    scoreboardContent.appendChild(scoreCard);
+    scoreboardContent.getBoundingClientRect(); // NOTE: neccessary for transition to work
 
     scoreCard.querySelector('.progress').style.width = `${(score / maxScore) * 100}%`;
     scoreCard.querySelector('.progress').classList.add('active');
   });
+  hideOverlay(scoreboard);
 };
 
 export const addToScoreBoard = async (usernameValue, scoreValue) => {

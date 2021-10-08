@@ -1,5 +1,8 @@
 import {
-  initializeScoreboard, addToScoreBoard, setDisabledState, clearInput,
+  initializeScoreboard,
+  addToScoreBoard,
+  setDisabledState,
+  clearInput,
 } from './dom-functions.js';
 
 export default () => {
@@ -10,9 +13,9 @@ export default () => {
   const formElem = document.querySelector('form');
   const userInput = document.getElementById('name');
   const scoreInput = document.getElementById('score');
+  const submitInput = formElem.querySelector('input[type=submit]');
   formElem.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const submitInput = formElem.querySelector('input[type=submit]');
     setDisabledState(submitInput, true);
     const success = await addToScoreBoard(userInput.value, scoreInput.value);
     if (success) initializeScoreboard();

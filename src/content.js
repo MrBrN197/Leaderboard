@@ -8,8 +8,19 @@ export default `
         <h2>Recent scores</h2>
         <button id="refresh-btn" type="button">Refresh</button>
       </div>
-      <ul id="scoreboard">
-      </ul>
+      <div id="scoreboard">
+        <ul class="content"></ul>
+        <div class="overlay">
+          <div class="overlay-content">
+            <div class="boxes">
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+              <div class="box"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
     <section class="add-score">
       <div class="header">
